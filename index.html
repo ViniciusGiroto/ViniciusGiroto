@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Giroto.dev</title>
+  <style>
+    :root {
+      --color-1: #AC573D;
+      --color-2: #F19E93;
+
+      --light-color: oklch(93.62% 0.008 83.61);
+      --accent-color: oklch(81.16% 0.125 83.61);
+      --dark-color: oklch(34.5% 0.060 188.08);
+
+      --light-text-color: oklch(0% 0 0 / 85%);
+      --dark-text-color: oklch(100% 0 0 / 85%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Gabarito", sans-serif;
+      background-color: var(--dark-color);
+      color: var(--dark-text-color);
+      display: grid;
+
+      position: absolute;
+      inset: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      padding-bottom: 1em;
+    }
+
+    p {
+      padding-bottom: 1em;
+      text-indent: 1em;
+    }
+
+    h3::after,
+    h2::after {
+      content: "";
+      display: block;
+      width: 3rem;
+      height: 0.25rem;
+      border-radius: .125rem;
+      background-color: var(--accent-color);
+    }
+
+    figure {
+      display: grid;
+
+      & img {
+        aspect-ratio: 1;
+        width: 256px;
+        grid-area: 1 / 1;
+      }
+    }
+
+    main {
+      display: flex;
+      flex-direction: row;
+      place-self: center;
+      gap: 2rem;
+
+      @media (max-aspect-ratio: 1) {
+        flex-direction: column;
+      }
+
+      & .container {
+        display: flex;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <figure>
+      <svg viewBox="-2 -2 260 260" width="258" height="258">
+        <mask id="mask">
+          <rect x="0" y="0" width="256" height="256" stroke="none" fill="black" />
+          <path d="M 128 0 Q 0 0 0 128 T 128 256 T 256 128 T 128 0 Z" stroke="none" fill="white" />
+        </mask>
+
+        <image href="me_in_yellow.webp" width="256" height="256" mask="url(#mask)" />
+        <path d="M 128 0 Q 0 0 0 128 T 128 256 T 256 128 T 128 0 Z" stroke="var(--accent-color)" stroke-width="4"
+          stroke-dasharray="10 7 100 8 10" stroke-linecap="round" fill="none" />
+      </svg>
+    </figure>
+    <div>
+      <h1>Vinicius Giroto</h1>
+      <h2>About me</h2>
+      <p>I am not a web dev.</p>
+    </div>
+  </main>
+</body>
+
+</html>
