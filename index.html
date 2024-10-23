@@ -35,6 +35,12 @@
 
       position: absolute;
       inset: 0;
+
+      grid-template: "aboutme projects" / 5fr 2fr;
+
+      @media (max-aspect-ratio: 1) {
+        grid-template: "aboutme" "projects";
+      }
     }
 
     h1,
@@ -56,15 +62,30 @@
       height: 0.25rem;
       border-radius: .125rem;
       background-color: var(--accent-color);
+
+      transition: width .5s ease-in-out;
     }
 
     figure {
       display: grid;
+      align-content: center;
 
-      & img {
+      main & {
         aspect-ratio: 1;
-        width: 256px;
-        grid-area: 1 / 1;
+
+        svg {
+          width: 16rem;
+        }
+      }
+
+      aside & {
+        aspect-ratio: 16 / 9;
+
+        svg {
+          justify-self: center;
+          width: 80%;
+          height: 100%;
+        }
       }
     }
 
@@ -73,21 +94,49 @@
       flex-direction: row;
       place-self: center;
       gap: 2rem;
+      grid-area: aboutme;
 
       @media (max-aspect-ratio: 1) {
         flex-direction: column;
       }
 
-      & .container {
-        display: flex;
-        gap: 2rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    aside {
+      background-color: oklch(0 0 0 / 0.1);
+
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      grid-area: projects;
+
+      display: flex;
+      gap: 2rem;
+
+      padding: 2rem 10%;
+
+      overflow: auto;
+    }
+
+    .stroke {
+      text-decoration: line-through;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover h2::after {
+        width: 6rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="container">
+  <main>
     <figure>
       <svg viewBox="-2 -2 260 260" width="258" height="258">
         <mask id="mask">
@@ -95,7 +144,12 @@
           <path d="M 128 0 Q 0 0 0 128 T 128 256 T 256 128 T 128 0 Z" stroke="none" fill="white" />
         </mask>
 
-        <image href="me_in_yellow.webp" width="256" height="256" mask="url(#mask)" />
+        <mask id="mask-rect">
+          <rect x="0" y="0" width="256" height="144" stroke="none" fill="black" />
+          <rect x="0" y="0" rx="16" width="256" height="144" stroke="none" fill="white" />
+        </mask>
+
+        <image href="./images/me_in_yellow.webp" width="256" height="256" mask="url(#mask)" />
         <path d="M 128 0 Q 0 0 0 128 T 128 256 T 256 128 T 128 0 Z" stroke="var(--accent-color)" stroke-width="4"
           stroke-dasharray="10 7 100 8 10" stroke-linecap="round" fill="none" />
       </svg>
@@ -103,9 +157,37 @@
     <div>
       <h1>Vinicius Giroto</h1>
       <h2>About me</h2>
-      <p>I am not a web dev.</p>
+      <p class="stroke">I am not a web dev.</p>
+      <p>Am I a web dev?</p>
     </div>
   </main>
+  <aside>
+    <h1>Tools & Websites</h1>
+    <a href="https://proc.giroto.dev">
+      <article>
+        <h2>Assembly IDE & CPU Emulator</h2>
+        <figure>
+          <svg viewBox="-2 -2 260 148" width="258" height="146">
+            <image href="./images/proc.webp" width="256" height="144" mask="url(#mask-rect)" />
+            <rect x="0" y="0" rx="16" width="256" height="144" stroke="var(--accent-color)" stroke-width="4"
+              stroke-dasharray="10 7 100 8 10" stroke-linecap="round" fill="none" />
+          </svg>
+        </figure>
+      </article>
+    </a>
+    <a href="https://ifsc.usp.br/lio2a/">
+      <article>
+        <h2>LIO²A Website</h2>
+        <figure>
+          <svg viewBox="-2 -2 260 148" width="258" height="146">
+            <image href="./images/lio2a.webp" width="256" height="144" mask="url(#mask-rect)" />
+            <rect x="0" y="0" rx="16" width="256" height="144" stroke="var(--accent-color)" stroke-width="4"
+              stroke-dasharray="100 10 7 100 8 10" stroke-linecap="round" fill="none" />
+          </svg>
+        </figure>
+      </article>
+    </a>
+  </aside>
 </body>
 
 </html>
