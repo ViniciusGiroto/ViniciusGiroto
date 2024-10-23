@@ -131,6 +131,18 @@
       &:hover h2::after {
         width: 6rem;
       }
+
+      cursor: pointer;
+
+      & img {
+        height: 1.5em;
+        aspect-ratio: 1;
+      }
+    }
+
+    .icons {
+      display: flex;
+      gap: .25em;
     }
   </style>
 </head>
@@ -159,11 +171,15 @@
       <h2>About me</h2>
       <p class="stroke">I am not a web dev.</p>
       <p>Am I a web dev?</p>
+      <p class="icons">
+        <a href="https://github.com/ViniciusGiroto" target="_blank"><img src="./images/github.svg"></a>
+        <a href="https://www.linkedin.com/in/girotodev/" target="_blank"><img src="./images/linkedin.svg"></a>
+      </p>
     </div>
   </main>
   <aside>
     <h1>Tools & Websites</h1>
-    <a href="https://proc.giroto.dev">
+    <a href="https://proc.giroto.dev" target="_blank">
       <article>
         <h2>Assembly IDE & CPU Emulator</h2>
         <figure>
@@ -175,7 +191,7 @@
         </figure>
       </article>
     </a>
-    <a href="https://ifsc.usp.br/lio2a/">
+    <a href="https://ifsc.usp.br/lio2a/" target="_blank">
       <article>
         <h2>LIO²A Website</h2>
         <figure>
